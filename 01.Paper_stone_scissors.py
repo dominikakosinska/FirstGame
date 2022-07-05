@@ -6,7 +6,7 @@ window = pygame.display.set_mode([800, 500])
 
 # tytuł okna gry
 pygame.display.set_caption("Paper, Stone, Scissors")
-
+#zmiana GIT
 # wstawienie tła z pliku
 tlo = pygame.image.load('tlo.jpg')
 
