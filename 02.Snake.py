@@ -34,6 +34,7 @@ running = True
 
 # pętla główna programu
 while running:
+
     # opóźnienie w grze
     pygame.time.delay(50)
 
@@ -43,22 +44,25 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-
+    #okno początkowe
     if run == 0:
         window.fill(tlo)
         window.blit(text1, [25, 140])
         window.blit(text2, [170, 250])
         pygame.display.update()
 
-
+    #przejście z okna początkowego do gry - naciśnięcie spacji
+    #włączenie obsługi zdarzeń
     start = pygame.key.get_pressed()
-    # warunki do zmiany pozycji obiektu
+    # warunki do przejścia do okna gry
     if start[pygame.K_SPACE] :
         run += 1
 
+    #okno gry
     if run >= 1:
+        #włączenie obsługi zdarzeń
         keys = pygame.key.get_pressed()
-    # warunki do zmiany pozycji obiektu
+        # warunki do zmiany pozycji obiektu
         if keys[pygame.K_LEFT] :
             x -= krok
         if keys[pygame.K_RIGHT] :
@@ -68,7 +72,7 @@ while running:
         if keys[pygame.K_DOWN] :
             y += krok
 
-        #blokada okna - aby wąż nie wychodził poza obraz
+        #blokada okna - aby wąż nie wychodził poza obraz okna
         if x < 0:
             x = 0
         elif x > 580:
@@ -77,8 +81,12 @@ while running:
             y = 0
         elif y > 380:
             y = 380
+
+        #czyszczenie ekranu
         window.fill(tlo)
+        #rysowanie prostąkąta
         pygame.draw.rect(window, (0, 0, 0), (x, y, szerokosc, wysokosc))
+        #odświeżanie ekranu
         pygame.display.update()
 
 #zakończenie zadania
